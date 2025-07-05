@@ -4,19 +4,10 @@ import Login from './pages/login';
 
 function App() {
   return (
-    <div>
-      <Login />
-    </div>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
-
-
-
-//     </div>
-//     // <BrowserRouter>
-//     //   <AppRoutes />
-//     // </BrowserRouter>
-//   );
-// }
 
 export default App;

@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import styles from './login.module.css';
 import logo from '../assets/logo.png';
 //import { useNavigate } from 'react-router-dom';
 //import { useAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
+  useEffect(() => {
+    document.title = "Login - Motspetits";
+  }, []);
 
   return (
     <div className={styles.container}>
