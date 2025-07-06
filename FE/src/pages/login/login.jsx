@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import styles from './login.module.css';
-import logo from '../../../public/logo.png';
+import logo from '/logo.png';
 import textbox from '../../components/textbox/textbox.module.css';
 import button from '../../components/button/button.module.css';
 import { motion } from 'framer-motion';
