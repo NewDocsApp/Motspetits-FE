@@ -1,11 +1,17 @@
 import { Routes, Route } from 'react-router-dom';
-import Login from '../pages/login';
+import Login from '../pages/login/login';
+import Signup from '../pages/signup/signup';
+import { AnimatePresence } from 'framer-motion';
+
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-    </Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 

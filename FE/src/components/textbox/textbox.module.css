@@ -1,0 +1,23 @@
+.logintextbox {
+    background: linear-gradient(to right, rgba(120, 188, 222, 0.7), rgba(253, 187, 214, 0.7));
+    width: 60%;
+    padding: 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    border: 1px;
+    outline: none;
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #ffffff
+}
+
+.logintextbox:hover {
+    
+    backdrop-filter: blur(10px);
+}
+
+.logintextbox::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+}
