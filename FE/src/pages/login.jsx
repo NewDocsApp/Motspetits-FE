@@ -1,10 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './login.module.css';
 import logo from '../assets/logo.png';
+import authApi from '../apis/auth';
 //import { useNavigate } from 'react-router-dom';
 //import { useAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
+  const [popUp, setPopUp] = useState({show: false, message: '', success: false})
+
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await authApi.login({email, password})
+      localStorage.setItem("accessToken", res.accessToken)
+      setPopUp({ show: true, message: "Đăng nhập thành công", success: true })
+      
+    } catch (error) {
+      setPopUp({ show: true, message: `Đăng nhập thất bại`, success: false })
+    }
+    setTimeout(() => setPopUp({...popUp, show: false}), 2000)
+  }
   useEffect(() => {
     document.title = "Login - Motspetits";
   }, []);
@@ -27,8 +45,12 @@ const Login = () => {
             width: '140px'
           }} />
           <div className={styles["title-login"]}>LOGIN</div>
-          <input type="text" placeholder="Username" className={styles.logintextbox} />
-          <input type="password" placeholder="Password" className={styles.logintextbox} />
+          <input type="text" placeholder="Email" className={styles.logintextbox} 
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input type="password" placeholder="Password" className={styles.logintextbox} 
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <div>
             <label>
               <input type="checkbox"/>
@@ -37,7 +59,12 @@ const Login = () => {
             <label className={styles.forgot}>Forgot password?</label>
           </div>
           <div>
-            <button className={styles.loginButton}>Login</button>
+            <button className={styles.loginButton} onClick={handleLogin}>Login</button>
+            {popUp.show && (
+              <div className={`${styles.popup} ${popUp.success ? styles.success : styles.error}`}>
+                {popUp.message}
+              </div>
+            )}
           </div>
         </div>
       </div>
