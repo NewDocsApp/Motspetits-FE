@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Login from '../pages/login/login';
 import Signup from '../pages/signup/signup';
 import Home from '../pages/home/home';
+import TextEditor from '../pages/edittext/edittext';
 import { AnimatePresence } from 'framer-motion';
 
 
@@ -12,6 +13,7 @@ const AppRoutes = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="" element={<Home />} />
+        <Route path="/edit" element={<TextEditor />} />
       </Routes>
     </AnimatePresence>
   );
