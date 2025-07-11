@@ -34,6 +34,10 @@
     color: #5489c9;
 }
 
+.menubar div {
+    cursor: pointer;
+}
+
 .dropdown {
     margin-top: 10px;
     position: absolute;
@@ -54,12 +58,11 @@
 
 .dropdown div:hover {
     background-color: #5489c9;
+    text-decoration: none;
 }
 
 .word {
-    margin-left: 20px;
-    margin-right: 20px;
     margin-top: 30px;
+    width: 794px;
     box-shadow: 0 0 10px #abc3e4;
 }
-
