@@ -1,13 +1,13 @@
 .container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  background-image: url('/bg.jpg'); 
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('/bg.jpg'); 
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
 }
 
 .card{
