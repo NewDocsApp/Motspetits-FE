@@ -89,7 +89,7 @@
   overflow: hidden;
 }
 
-.table-header {
+.tableheader {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #7DA9DF; 
@@ -101,7 +101,7 @@
   margin-top: 20px;
 }
 
-.table-row {
+.tablerow {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -110,6 +110,6 @@
   transition: background-color 0.2s ease;
 }
 
-.table-row:hover {
+.tablerow:hover {
   background-color: #f0f9ff; 
 }

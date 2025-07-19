@@ -1,18 +1,41 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './login.module.css';
 import logo from '/logo.png';
 import textbox from '../../components/textbox/textbox.module.css';
 import button from '../../components/button/button.module.css';
 import { motion } from 'framer-motion';
+import authApi from '../../apis/auth';
+import { useNavigate } from 'react-router-dom';
 
 //import { useNavigate } from 'react-router-dom';
 //import { useAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
+  const [popUp, setPopUp] = useState({show: false, message: '', success: false})
   useEffect(() => {
     document.title = "Login - Motspetits";
   }, []);
-
+  const navigate = useNavigate()
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const res = await authApi.login({email, password})
+      localStorage.setItem("accessToken", res.accessToken)
+      console.log(res.accessToken);
+      
+      setPopUp({show: true, message: "Đăng nhập thành công", success: true })
+      setTimeout(() => {
+        setPopUp({...popUp, show: false})
+        navigate("/")
+      }, 1200)
+    } catch (error) {
+      setPopUp({ show: true, message: `Đăng nhập thất bại + ${error}`, success: false })
+    }
+    setTimeout(() => setPopUp({...popUp, show: false}), 2000)
+  } 
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -37,8 +60,8 @@ const Login = () => {
               width: '140px'
             }} />
             <div className={styles["title-login"]}>LOGIN</div>
-            <input type="text" placeholder="Username" className={textbox.logintextbox} />
-            <input type="password" placeholder="Password" className={textbox.logintextbox} />
+            <input type="text" placeholder="Email" className={textbox.logintextbox} onChange={(e) => setEmail(e.target.value)}/>
+            <input type="password" placeholder="Password" className={textbox.logintextbox} onChange={(e) => setPassword(e.target.value)}/>
             <div>
               <label>
                 <input type="checkbox"/>
@@ -47,7 +70,12 @@ const Login = () => {
               <label className={styles.forgot}>Forgot password?</label>
             </div>
             <div>
-              <button className={button.loginButton}>Login</button>
+              <button className={button.loginButton} onClick={handleLogin}>Login</button>
+              {popUp.show && (
+                <div className={`${styles.popup} ${popUp.success ? styles.success : styles.error}`}>
+                  {popUp.message}
+                </div>
+              )}
             </div>
           </div>
         </div>

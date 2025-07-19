@@ -5,6 +5,8 @@ import styles from './edittext.module.css';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import documentApi from '../../apis/document';
 
 const modules = {
   toolbar: [
@@ -27,11 +29,36 @@ const TextEditor = () => {
   const [content, setContent] = useState('');
   const [openMenu, setOpenMenu] = useState(null);
   const [title, setTitle] = useState('');
+  const {id} = useParams()
   const menuContainerRef = useRef(null);
 
   useEffect(() => {
-    document.title = "Edit text - Motspetits";
-  }, []);
+    if (id) {
+      const fetchDocument = async () => {
+        try {
+          const res = await documentApi.getDocumentById(id)
+          setTitle(res.title)
+          let contentObj = res.content
+          if (typeof contentObj === 'string')
+          {
+            try {
+              contentObj = JSON.parse(contentObj)
+            } catch (e) {
+              contentObj = {
+                text: contentObj
+              }
+            }
+          }
+          setContent(contentObj.text || '')
+          
+        } catch (error) {
+          console.log(error);
+          
+        }
+      }
+      fetchDocument()
+    }
+  }, [id]);
 
   useEffect(() => {
   const handleClickOutside = (event) => {

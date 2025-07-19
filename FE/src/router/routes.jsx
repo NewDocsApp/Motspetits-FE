@@ -13,7 +13,7 @@ const AppRoutes = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="" element={<Home />} />
-        <Route path="/edit" element={<TextEditor />} />
+        <Route path="/edit/:id" element={<TextEditor />} />
       </Routes>
     </AnimatePresence>
   );
