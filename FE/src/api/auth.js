@@ -14,3 +14,18 @@ export const loginApi = async (email, password) => {
     throw error.response?.data || { message: `${error}` };
   }
 }
+
+export const registerApi = async (email, username, password, fullname) => {
+  try {
+    const response = await axios.post(`${url}/api/v1/auth/register`, {
+      email,
+      username,
+      password,
+      fullname
+    });
+
+    return response.data;
+  } catch (error){
+    throw error.response?.data || { message: `${error}`};
+  }
+}

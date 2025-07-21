@@ -56,7 +56,7 @@ const Login = () => {
           }} />
           <div className={styles["title-login"]}>LOGIN</div>
 
-          <form onSubmit={handleSubmit} className={styles.form}>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               placeholder="Email"
