@@ -55,7 +55,7 @@ const VerifyOtp = () => {
         }
 
         try {
-            const data = await verifyOtp(otpCode);
+            const data = await verifyOtp(otpCode, "ACCOUNT_VERIFICATION");
             console.log("Verify otp success", data);
             navigate('/login');
         } catch (e) {

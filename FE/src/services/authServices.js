@@ -12,6 +12,6 @@ export const register = async (email, username, password, fullname) => {
 }
 
 export const verifyOtp = async (otp, purpose) => {
-  const data = await verifyOtp();
+  const data = await verifyOtp(otp, purpose);
   return data;
 }
