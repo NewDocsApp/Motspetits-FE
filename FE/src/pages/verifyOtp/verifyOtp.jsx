@@ -6,7 +6,7 @@ import { verifyOtp } from '../../services/authServices';
 
 const VerifyOtp = () => {
     const [otp, setOtp] = useState(['', '', '', '', '']);
-    const [error, setError] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
     const inputRefs = useRef([]);
     const navigate = useNavigate();
 
@@ -46,11 +46,11 @@ const VerifyOtp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
+        setErrorMsg('');
         const otpCode = otp.join('');
 
         if (otpCode.length !== 5) {
-            setError('Please enter full 5-digit OTP code.');
+            setErrorMsg('Please enter full 5-digit OTP code.');
             return;
         }
 
@@ -59,7 +59,7 @@ const VerifyOtp = () => {
             console.log("Verify otp success", data);
             navigate('/login');
         } catch (e) {
-            setError(e.message || "OTP verification failed");
+            setErrorMsg(e.message || "OTP verification failed");
         }
     };
 
@@ -91,8 +91,8 @@ const VerifyOtp = () => {
                             />
                         ))}
                     </div>
-                    {error && (
-                        <div className={styles.error}>{error}</div>
+                    {errorMsg && (
+                        <div className={styles.error}>{errorMsg}</div>
                     )}
                     <div style={{ textAlign: 'center', marginTop: '20px' }}>
                         <button type="submit" className={button.loginButton}>Verify</button>
