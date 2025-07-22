@@ -29,3 +29,17 @@ export const registerApi = async (email, username, password, fullname) => {
     throw error.response?.data || { message: `${error}`};
   }
 }
+
+export const verifyOtpApi = async (otp, purpose) => {
+  try {
+    const response = await axios.post(`${url}/api/v1/auth/verify-otp`, {
+      otp,
+      purpose
+    }) 
+    return response.data;
+  }
+  catch (err) {
+    throw error.response?.data || { message: `${error}`};
+  }
+
+}

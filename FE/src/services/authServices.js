@@ -10,3 +10,8 @@ export const register = async (email, username, password, fullname) => {
   const data = await registerApi(email, username, password, fullname);
   return data;
 }
+
+export const verifyOtp = async (otp, purpose) => {
+  const data = await verifyOtp();
+  return data;
+}
