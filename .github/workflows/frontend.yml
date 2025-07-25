@@ -37,6 +37,6 @@ jobs:
 
     - name: Build and Push Docker image
       run: |
-        docker build -t thaodinh426/motspetits-fe:latest -f FE/Dockerfile.dev .
+        docker build -t thaodinh426/motspetits-fe:latest -f Dockerfile.dev .
         docker push thaodinh426/motspetits-fe:latest
-    
+      working-directory: ./FE
