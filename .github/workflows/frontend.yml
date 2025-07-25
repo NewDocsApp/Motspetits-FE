@@ -19,15 +19,15 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./MotsPetits-FE/FE
+      working-directory: ./FE
 
     - name: Run tests
       run: npm test --if-present
-      working-directory: ./MotsPetits-FE/FE
+      working-directory: ./FE
 
     - name: Build the frontend
       run: npm run build
-      working-directory: ./MotsPetits-FE/FE
+      working-directory: ./FE
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
