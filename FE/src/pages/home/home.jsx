@@ -19,13 +19,13 @@ const Home = () => {
     setErrorNewDoc('');
     setIsCreating(true);
     try {
-    const data = await createDocument('Untitled', '');
+    const data = await createDocument('Untitled', '{}');
      if (data) {
         navigate(`/document`);
       } else {
         setErrorNewDoc('Failed to create document');
       }
-    } catch (e) {
+    } catch (error) {
       console.error('Error creating document:', error);
       setErrorNewDoc('An error occurred while creating the document');
     } finally {
