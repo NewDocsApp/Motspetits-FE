@@ -6,7 +6,6 @@ import TextEditor from '../pages/edittext/edittext';
 import VerifyOtp from '../pages/verifyOtp/verifyOtp';
 import { AnimatePresence } from 'framer-motion';
 
-
 const AppRoutes = () => {
   const location = useLocation();
   return (
@@ -15,7 +14,10 @@ const AppRoutes = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
+        {/* Route cũ để backward compatibility */}
         <Route path="/document" element={<TextEditor />} />
+        {/* Route mới với ID parameter */}
+        <Route path="/document/:id" element={<TextEditor />} />
         <Route path="/verifyOtp" element={<VerifyOtp />} />
       </Routes>
     </AnimatePresence>

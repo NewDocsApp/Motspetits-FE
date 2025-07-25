@@ -21,7 +21,8 @@ const Home = () => {
     try {
     const data = await createDocument('Untitled', '{}');
      if (data) {
-        navigate(`/document`);
+        setDocument(data);
+        navigate(`/document/${data.id}`);
       } else {
         setErrorNewDoc('Failed to create document');
       }
