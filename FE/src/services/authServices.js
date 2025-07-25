@@ -4,6 +4,11 @@ import { verifyOtpApi } from '../api/auth';
 
 export const login = async (email, password) => {
   const data = await loginApi(email, password);
+
+  if (data?.accessToken) {
+    localStorage.setItem('token', data.accessToken); 
+  }
+  
   return data;
 };
 

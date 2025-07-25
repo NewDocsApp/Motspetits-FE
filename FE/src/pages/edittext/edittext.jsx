@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import styles from './edittext.module.css';
@@ -32,6 +33,8 @@ const TextEditor = () => {
   useEffect(() => {
     document.title = "Edit text - Motspetits";
   }, []);
+
+  const { id } = useParams();
 
   useEffect(() => {
   const handleClickOutside = (event) => {
