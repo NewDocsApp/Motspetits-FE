@@ -21,3 +21,26 @@ export const createDocumentApi = async (title, content) => {
         throw e.response?.data || { message: `${e}` };
     }
 }
+
+export const getUserDocumentApi = async () => {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.log('No token found!');
+            throw { message: 'Authentication token is missing' };
+        }
+        const response = await axios.get(`${url}/api/v1/documents/my-documents`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        return response.data;
+        
+    } catch (e) {
+        console.error('Error:', e);
+        
+        throw e.response?.data || { message: `${e}` };
+    }
+}
